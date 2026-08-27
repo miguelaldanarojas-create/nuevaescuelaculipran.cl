@@ -372,36 +372,11 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: var(--radio);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--blanco);
-  font-family: var(--fuente-titulo);
-  font-size: 1.1rem;
-  padding: 1.5rem;
-  gap: 0.4rem;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  object-fit: cover;
+  background: var(--crema-suave);
 }
-.placeholder-img span{
-  font-family: var(--fuente-texto);
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-.ph-1{ background: linear-gradient(135deg, var(--turquesa), var(--turquesa-profundo)); }
-.ph-2{ background: linear-gradient(135deg, var(--coral), var(--coral-fuerte)); }
-.ph-3{ background: linear-gradient(135deg, var(--amarillo), var(--coral)); }
-.ph-4{ background: linear-gradient(135deg, var(--verde-hoja), var(--verde-hoja-fuerte)); }
-.ph-5{ background: linear-gradient(135deg, var(--rosa), var(--coral-fuerte)); }
-.ph-6{ background: linear-gradient(135deg, var(--dorado), var(--coral)); }
-.ph-7{ background: linear-gradient(135deg, var(--turquesa-fuerte), var(--tinta)); }
-.ph-8{ background: linear-gradient(135deg, var(--verde-hoja-fuerte), var(--tinta)); }
 
-.hero-media.placeholder-img{ aspect-ratio: 5/4; box-shadow: none; }
+.hero-media.placeholder-img{ aspect-ratio: 5/4; box-shadow: var(--sombra); }
 
 /* ---------- tarjetas / grillas ---------- */
 .grid{ display: grid; gap: 1.5rem; }
@@ -432,6 +407,13 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
   justify-content: center;
   font-size: 1.5rem;
   background: color-mix(in srgb, var(--acento-claro) 18%, transparent);
+  margin-bottom: 1rem;
+}
+.card-img{
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radio-chico);
   margin-bottom: 1rem;
 }
 
