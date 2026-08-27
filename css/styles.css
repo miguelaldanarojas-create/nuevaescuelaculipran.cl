@@ -178,23 +178,24 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
   gap: 0.9rem;
 }
 
-/* ---------- header ---------- */
+/* ---------- header ----------
+   Una sola fila: logo a la izquierda, nav a la derecha. Sin backdrop-filter:
+   esa propiedad convierte a .site-header en el "contenedor" de referencia
+   para los descendientes con position:fixed (como .main-nav), lo que rompía
+   el menú móvil y lo hacía aparecer apilado en vez de oculto. */
 .site-header{
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 253, 248, 0.94);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(18,59,55,0.08);
+  background: var(--crema);
 }
 
 .site-header .container{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
+  gap: 1.5rem;
+  height: 96px;
 }
 
 .brand{
@@ -221,7 +222,8 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
 .brand-text{
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  justify-content: center;
+  line-height: 1.15;
 }
 .brand-title{
   font-family: var(--fuente-script);
@@ -318,11 +320,10 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
   line-height: 1;
 }
 
-/* CTA de matrícula: primer ítem visible del menú en mobile */
-.nav-cta{ margin-bottom: 1.5rem; order: -1; }
-.nav-cta .btn{ width: 100%; }
-
-@media (min-width: 1180px){
+/* Desde acá el header es UNA fila: logo | nav, sin hamburguesa ni drawer.
+   1240px es el mínimo real (medido con las fuentes reales: logo en Caveat +
+   7 links en Nunito con 28px de gap) para que nada se corte en dos líneas. */
+@media (min-width: 1240px){
   .nav-toggle, .nav-close, .nav-scrim{ display: none; }
 
   .main-nav{
@@ -334,32 +335,17 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
     padding: 0;
     transform: none;
     overflow: visible;
-    display: flex;
-    align-items: center;
-    flex: 1;
-    gap: 1.25rem;
-    min-width: 0;
+    display: block;
   }
   .main-nav ul{
-    flex: 1;
+    display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 0.1rem;
-    order: 1;
+    gap: 28px;
   }
-  .main-nav a{ font-size: 0.92rem; padding: 0.5em 0.65em; }
-
-  .nav-cta{
-    margin: 0;
-    order: 2;
-    flex-shrink: 0;
-  }
-  .nav-cta .btn{
-    width: auto;
-    padding: 0.6em 1.4em;
-    font-size: 0.92rem;
-    box-shadow: none;
+  .main-nav a{
+    font-size: 0.9rem;
+    padding: 0.4em 0;
   }
 }
 
