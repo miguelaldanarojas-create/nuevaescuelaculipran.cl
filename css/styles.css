@@ -627,59 +627,45 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
   justify-content: space-between;
 }
 
-/* ---------- teaser de video + lightbox ---------- */
+/* ---------- teaser de video (overlay tipo thumbnail) + lightbox ----------
+   .video-teaser envuelve una imagen ya existente (ej. hero-media) sin tocar
+   su tamaño/aspect-ratio/radio propios — solo agrega el botón de play. */
 .video-teaser{
   position: relative;
   display: block;
-  border-radius: var(--radio);
-  overflow: hidden;
-  box-shadow: var(--sombra);
-  cursor: pointer;
+  width: 100%;
   border: none;
   padding: 0;
   background: none;
+  cursor: pointer;
 }
-.video-teaser img{
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  display: block;
-}
+.video-teaser img{ transition: filter 0.25s ease; }
+.video-teaser:hover img{ filter: brightness(0.82); }
 .video-teaser .play-badge{
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(18,59,55,0.18);
-  transition: background 0.2s ease;
+  pointer-events: none;
 }
-.video-teaser:hover .play-badge{ background: rgba(18,59,55,0.32); }
 .video-teaser .play-badge span{
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: var(--acento);
-  color: var(--blanco);
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--acento);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  padding-left: 4px;
   box-shadow: 0 8px 24px rgba(18,59,55,0.35);
+  transition: transform 0.25s ease;
 }
-
-.video-link{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--acento);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 0.1em;
-}
-.video-link:hover{ color: var(--acento-hover); }
+.video-teaser:hover .play-badge span{ transform: scale(1.1); }
 
 .video-modal{
   display: none;
