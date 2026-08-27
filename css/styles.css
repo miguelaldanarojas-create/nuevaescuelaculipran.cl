@@ -586,6 +586,56 @@ section{ padding: clamp(2.5rem, 6vw, 5rem) 0; }
 @media (min-width: 700px){
   .map-embed{ aspect-ratio: 16 / 9; }
 }
+
+.video-embed{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+.video-embed iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ---------- pastillas de navegación interna (dentro de una página) ---------- */
+.page-tabs-wrap{
+  padding: 0.85rem 0;
+  background: var(--crema);
+  border-bottom: 1px solid var(--crema-suave);
+}
+.page-tabs{
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.page-tabs::-webkit-scrollbar{ display: none; }
+.page-tabs a{
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  background: var(--crema-suave);
+  color: var(--texto);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.page-tabs a:hover{
+  background: color-mix(in srgb, var(--acento) 18%, transparent);
+  color: var(--acento);
+}
+
+/* margen para que el header sticky (96px) no tape las secciones ancladas */
+#talleres, #horarios, #viernes-magicos, #disco{ scroll-margin-top: 112px; }
 @media (min-width: 800px){
   .contact-grid{ grid-template-columns: 1fr 1fr; }
 }
